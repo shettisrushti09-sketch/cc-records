@@ -45,7 +45,7 @@ Ubuntu terminal access was established via the noVNC console. System specificati
 * **Guest System Configuration:**
   ![Proxmox System Config](screenshots/type1-promox/05-proxmox-system-configuration.png)
 * **Sysbench CPU Benchmark Results:**
-  ![Proxmox Sysbench](screenshots/type1-promox/06-proxmox-sysbench-result.png)
+  ![Proxmox Sysbench](screenshots/type1-promox/06-promox-sysbench-result.png)
 * **Hypervisor Resource Monitoring:**
   ![Proxmox Resource Monitoring](screenshots/type1-promox/07-promox-resource-monitoring.png)
 
@@ -65,8 +65,7 @@ Ubuntu 22.04 LTS was provisioned on VMware Workstation on top of a Windows host 
 ### 4.2 Guest Verification & Benchmark Execution
 
 * **Guest Configuration Verification:**
-  ![VMware Config 1](screenshots/type2-vmware/03-vmware-system-configuration%201.png)
-  ![VMware Config 2](screenshots/type2-vmware/03-vmware-system-configuration%202.png)
+  ![VMware Config](screenshots/type2-vmware/03-vmware-system-configuration%202.png)
 * **VMware Sysbench Benchmark Results:**
   ![VMware Sysbench](screenshots/type2-vmware/04-vmware-sysbench-result.png)
 
