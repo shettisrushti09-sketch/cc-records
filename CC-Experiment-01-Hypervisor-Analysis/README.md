@@ -30,17 +30,24 @@ To deploy and configure Ubuntu Linux 22.04 LTS virtual machines on both a Type-1
 The Proxmox VE web management console was accessed to verify cluster health and provision VM `CC-Exp1-Type1` (ID: 124).
 
 * **Datacenter Dashboard:**
+  ![Proxmox Dashboard](screenshots/type1-promox/01-proxmox-dashboard.png)
 * **VM Hardware Configuration:**
+  ![Proxmox VM Config](screenshots/type1-promox/02-proxmox-vm-configuration.png)
 * **VM Running Status:**
+  ![Proxmox VM Running](screenshots/type1-promox/03-proxmox-vm-running.png)
 
 ### 3.2 Guest Console Verification & Benchmarking
 
 Ubuntu terminal access was established via the noVNC console. System specifications were verified using `hostnamectl`, `lscpu`, `free -h`, and `df -h`. CPU compute performance was measured with `sysbench cpu --cpu-max-prime=20000 run`.
 
 * **Ubuntu Console Access:**
+  ![Proxmox Ubuntu Console](screenshots/type1-promox/04-proxmox-ubuntu-console.png)
 * **Guest System Configuration:**
+  ![Proxmox System Config](screenshots/type1-promox/05-proxmox-system-configuration.png)
 * **Sysbench CPU Benchmark Results:**
+  ![Proxmox Sysbench](screenshots/type1-promox/06-proxmox-sysbench-result.png)
 * **Hypervisor Resource Monitoring:**
+  ![Proxmox Resource Monitoring](screenshots/type1-promox/07-promox-resource-monitoring.png)
 
 ---
 
@@ -51,12 +58,17 @@ Ubuntu terminal access was established via the noVNC console. System specificati
 Ubuntu 22.04 LTS was provisioned on VMware Workstation on top of a Windows host OS with identical resource constraints.
 
 * **VMware VM Configuration:**
+  ![VMware VM Config](screenshots/type2-vmware/01-vmware-vm-configuration.png)
 * **VMware VM Running:**
+  ![VMware VM Running](screenshots/type2-vmware/02-vmware-vm-running.png)
 
 ### 4.2 Guest Verification & Benchmark Execution
 
 * **Guest Configuration Verification:**
+  ![VMware Config 1](screenshots/type2-vmware/03-vmware-system-configuration%201.png)
+  ![VMware Config 2](screenshots/type2-vmware/03-vmware-system-configuration%202.png)
 * **VMware Sysbench Benchmark Results:**
+  ![VMware Sysbench](screenshots/type2-vmware/04-vmware-sysbench-result.png)
 
 ---
 
@@ -74,6 +86,7 @@ Ubuntu 22.04 LTS was provisioned on VMware Workstation on top of a Windows host 
 | **Maximum Latency** | **1.09 ms** | **4.38 ms** | Type-2 exhibits latency jitter caused by host OS background workloads. |
 
 * **Comparison Summary Artifact:**
+  ![Comparison Table](screenshots/comparison/01-hypervisor-performance-comparison.png)
 
 ---
 
