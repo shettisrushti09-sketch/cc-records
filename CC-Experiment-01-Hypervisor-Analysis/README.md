@@ -1,96 +1,54 @@
-# Cloud Computing Lab: Experiment 1
+# Performance Analysis of Type-1 and Type-2 Hypervisors
 
-## Comparative Performance Analysis of Type-1 (Proxmox VE) and Type-2 (VMware Workstation) Hypervisors
+## Executive Summary
 
----
+This repository contains the complete experimental setup, empirical benchmark data, performance visualization, and technical report comparing the CPU performance of a Type-1 Bare-Metal Hypervisor (Proxmox VE) and a Type-2 Hosted Hypervisor (VMware Workstation).
 
-## 1. Objective
+Both hypervisors were deployed with identically configured Ubuntu Virtual Machines (2 vCPU, 2 GB RAM, 20 GB Disk). The standard `sysbench` CPU prime-number calculation benchmark (`--cpu-max-prime=20000`) was executed on both virtual machines under identical workload conditions.
 
-To deploy and configure Ubuntu Linux 22.04 LTS virtual machines on both a Type-1 bare-metal hypervisor (Proxmox VE) and a Type-2 hosted hypervisor (VMware Workstation), configure matching virtual hardware resources (2 vCPUs, 2 GB RAM, 20 GB Disk), and evaluate their CPU compute performance and overhead using the Sysbench benchmarking utility.
-
----
-
-## 2. Environment & Resource Allocation
-
-| Hardware / Resource | Part A: Type-1 Hypervisor | Part B: Type-2 Hypervisor |
-| --- | --- | --- |
-| **Hypervisor Platform** | Proxmox VE (KVM Bare-Metal) | VMware Workstation (Hosted) |
-| **Host Operating System** | None (Runs directly on bare-metal) | Windows Host OS |
-| **Guest Operating System** | Ubuntu 22.04.5 LTS (x86_64) | Ubuntu 22.04.5 LTS (x86_64) |
-| **Virtual Cores (vCPUs)** | 2 Cores | 2 Cores |
-| **Allocated Memory (RAM)** | 2048 MB (2 GB) | 2048 MB (2 GB) |
-| **Storage Allocation** | 20 GB | 20 GB |
+### Key Finding
+**Proxmox VE (Type-1 Hypervisor)** achieved **1,716.69 Events/sec** compared to VMware Workstation's **1,364.78 Events/sec** — demonstrating a **+25.79% throughput advantage** and a **20.55% reduction in average latency**.
 
 ---
 
-## 3. Part A: Type-1 Hypervisor – Proxmox VE Implementation
-
-### 3.1 Hypervisor Dashboard & VM Creation
-
-The Proxmox VE web management console was accessed to verify cluster health and provision VM `CC-Exp1-Type1` (ID: 124).
-
-* **Datacenter Dashboard:**
-  ![Proxmox Dashboard](screenshots/type1-promox/01-proxmox-dashboard.png)
-* **VM Hardware Configuration:**
-  ![Proxmox VM Config](screenshots/type1-promox/02-proxmox-vm-configuration.png)
-* **VM Running Status:**
-  ![Proxmox VM Running](screenshots/type1-promox/03-proxmox-vm-running.png)
-
-### 3.2 Guest Console Verification & Benchmarking
-
-Ubuntu terminal access was established via the noVNC console. System specifications were verified using `hostnamectl`, `lscpu`, `free -h`, and `df -h`. CPU compute performance was measured with `sysbench cpu --cpu-max-prime=20000 run`.
-
-* **Ubuntu Console Access:**
-  ![Proxmox Ubuntu Console](screenshots/type1-promox/04-proxmox-ubuntu-console.png)
-* **Guest System Configuration:**
-  ![Proxmox System Config](screenshots/type1-promox/05-proxmox-system-configuration.png)
-* **Sysbench CPU Benchmark Results:**
-  ![Proxmox Sysbench](screenshots/type1-promox/06-promox-sysbench-result.png)
-* **Hypervisor Resource Monitoring:**
-  ![Proxmox Resource Monitoring](screenshots/type1-promox/07-promox-resource-monitoring.png)
+## Table of Contents
+1. [Project Objectives](#1-project-objectives)
+2. [Hypervisor Architectural Comparison](#2-hypervisor-architectural-comparison)
+3. [Virtual Machine Specifications](#3-virtual-machine-specifications)
+4. [Experimental Procedure](#4-experimental-procedure)
+5. [Empirical Results & Screenshots](#5-empirical-results--screenshots)
+6. [Performance Comparison Table](#6-performance-comparison-table)
+7. [Metric Explanations & Visualizations](#7-metric-explanations--visualizations)
+8. [Technical Analysis & Discussion](#8-technical-analysis--discussion)
+9. [Conclusion & Engineering Takeaways](#9-conclusion--engineering-takeaways)
+10. [Repository Structure & Reproduction](#10-repository-structure--reproduction)
 
 ---
 
-## 4. Part B: Type-2 Hypervisor – VMware Workstation Implementation
+## 1. Project Objectives
 
-### 4.1 VM Configuration & State
+The primary objectives of this Cloud Computing laboratory experiment are:
 
-Ubuntu 22.04 LTS was provisioned on VMware Workstation on top of a Windows host OS with identical resource constraints.
-
-* **VMware VM Configuration:**
-  ![VMware VM Config](screenshots/type2-vmware/01-vmware-vm-configuration.png)
-* **VMware VM Running:**
-  ![VMware VM Running](screenshots/type2-vmware/02-vmware-vm-running.png)
-
-### 4.2 Guest Verification & Benchmark Execution
-
-* **Guest Configuration Verification:**
-  ![VMware Config](screenshots/type2-vmware/03-vmware-system-configuration%202.png)
-* **VMware Sysbench Benchmark Results:**
-  ![VMware Sysbench](screenshots/type2-vmware/04-vmware-sysbench-result.png)
+* **Deployment:** Provision two identical Ubuntu Virtual Machines across different hypervisor architectures:
+  * **Type-1 (Bare-Metal):** Proxmox VE (Kernel-based Virtual Machine / KVM)
+  * **Type-2 (Hosted):** VMware Workstation Pro on a Windows Host OS
+* **Standardization:** Enforce uniform hardware resource allocations (2 vCPU, 2048 MB RAM, 20 GB Virtual Storage) to ensure direct comparability.
+* **Benchmarking:** Execute the `sysbench` CPU computational benchmark using 20,000 prime numbers to stress test CPU virtualization efficiency.
+* **Metric Collection:** Capture execution time, total events processed, throughput (events/sec), and latency statistics (min, avg, max, 95th percentile).
+* **Architectural Evaluation:** Quantify the performance overhead introduced by host operating system abstraction layers in Type-2 hypervisors versus bare-metal hypervisor execution.
 
 ---
 
-## 5. Performance Comparison & Analysis
+## 2. Hypervisor Architectural Comparison
 
-### 5.1 Benchmark Comparison Table
+### Type-1 Hypervisor — Proxmox VE (Bare-Metal Architecture)
+Proxmox VE runs directly on the bare-metal physical host hardware. The Linux kernel integrated with KVM acts as the hypervisor. Guest operating system instructions execute directly on hardware CPU VT-x/AMD-V extensions without passing through an intermediate desktop operating system.
 
-| Metric / Parameter | Type-1 Proxmox VE (Bare-Metal) | Type-2 VMware Workstation (Hosted) | Impact / Observations |
-| --- | --- | --- | --- |
-| **Total Execution Time** | **10.0006 s** | **10.0010 s** | Sysbench ran within the standard 10-second default test window. |
-| **Total Number of Events** | **16,903** | **9,842** | Proxmox processed significantly more events due to near-zero host overhead. |
-| **Events per Second** | **1,689.43** | **983.84** | Bare-metal KVM interfaces directly with physical CPU registers, yielding higher throughput. |
-| **Average Latency** | **0.59 ms** | **1.02 ms** | Proxmox delivers lower execution latency by bypassing intermediate OS scheduling. |
-| **Minimum Latency** | **0.57 ms** | **0.81 ms** | Minimum turnaround time is faster on Type-1. |
-| **Maximum Latency** | **1.09 ms** | **4.38 ms** | Type-2 exhibits latency jitter caused by host OS background workloads. |
-
-* **Comparison Summary Artifact:**
-  ![Comparison Table](screenshots/comparison/01-hypervisor-performance-comparison.png)
-
----
-
-## 6. Conclusion
-
-1. **Hypervisor Architecture Overhead:** The Type-1 hypervisor (Proxmox VE/KVM) achieved significantly higher compute throughput and lower execution latency than the Type-2 hypervisor (VMware Workstation) under identical virtual resource allocations.
-2. **Resource Scheduling:** The presence of the underlying host operating system in Type-2 virtualization introduces CPU scheduling contention and virtualization overhead, resulting in reduced benchmark event processing rates.
-3. **Suitability:** Type-1 hypervisors are optimal for high-throughput enterprise workloads, while Type-2 hypervisors remain suitable for local development and non-production testing.
+```text
++-------------------------------------------------------------------+
+|               Ubuntu Virtual Machine (Type-1 Guest)               |
++-------------------------------------------------------------------+
+|               Proxmox VE Hypervisor (Linux Kernel / KVM)          |
++-------------------------------------------------------------------+
+|                 Physical Server Hardware (Bare Metal)             |
++-------------------------------------------------------------------+
