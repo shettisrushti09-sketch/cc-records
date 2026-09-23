@@ -25,6 +25,7 @@ The CPU performance of both virtual machines was evaluated using the **Sysbench 
 
 ```bash
 sysbench cpu --cpu-max-prime=20000 run
+
 +-------------------------------------------------------------+
 |                 Ubuntu Virtual Machine                      |
 |                                                             |
