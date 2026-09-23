@@ -25,7 +25,15 @@ The CPU performance of both virtual machines was evaluated using the **Sysbench 
 
 ```bash
 sysbench cpu --cpu-max-prime=20000 run
+```
 
+---
+
+## Hypervisor Architecture
+
+### Type-1 Hypervisor – Proxmox VE
+
+```text
 +-------------------------------------------------------------+
 |                 Ubuntu Virtual Machine                      |
 |                                                             |
@@ -37,6 +45,11 @@ sysbench cpu --cpu-max-prime=20000 run
 |                  Physical Host Hardware                     |
 |                    CPU / RAM / Storage                      |
 +-------------------------------------------------------------+
+```
+
+### System Verification and Benchmark Commands
+
+```bash
 hostnamectl
 lscpu
 free -h
@@ -45,14 +58,21 @@ top
 sudo apt update
 sudo apt install sysbench -y
 sysbench --version
-sysbench cpu --cpu-max-prime=20000 runcc-records/
+sysbench cpu --cpu-max-prime=20000 run
+```
+
+---
+
+## Repository Structure
+
+```text
+cc-records/
 │
 ├── README.md
 │
 └── CC-Experiment-01-Hypervisor-Analysis/
     │
     ├── images/
-    │
     ├── results/
     │
     └── screenshots/
