@@ -34,6 +34,7 @@ Proxmox VE runs directly on the bare-metal physical host hardware. The Linux ker
 +-------------------------------------------------------------------+
 |                 Physical Server Hardware (Bare Metal)             |
 +-------------------------------------------------------------------+
+
 +-------------------------------------------------------------------+
 |               Ubuntu Virtual Machine (Type-2 Guest)               |
 +-------------------------------------------------------------------+
@@ -49,15 +50,3 @@ free -h
 df -h
 sudo apt update && sudo apt install sysbench -y
 sysbench cpu --cpu-max-prime=20000 run
-cc-records/
-│
-├── README.md                                  # Benchmark Report and Technical Analysis
-├── generate_plots.py                          # Matplotlib Visualization Generator
-└── images/                                    # Screenshots and Visualization Charts
-    ├── 1.png                                  # Proxmox VE Sysbench Result Screenshot
-    ├── 2.png                                  # VMware Workstation Sysbench Result Screenshot
-    ├── events_per_second_comparison.png       # CPU Throughput Graph
-    ├── latency_comparison.png                 # Latency Metrics Graph
-    ├── total_events_comparison.png            # Total Events Graph
-    └── overall_performance_dashboard.png      # Multi-panel Dashboard
-python generate_plots.py
