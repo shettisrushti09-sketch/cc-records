@@ -1,33 +1,36 @@
 # Performance Analysis of Type-1 and Type-2 Hypervisors
 
-| Course | Hypervisors | Benchmark | Status |
-| :--- | :--- | :--- | :--- |
-| Cloud Computing Lab | Proxmox VE (Type-1) vs VMware Workstation (Type-2) | sysbench CPU (20,000 primes) | Completed |
+[![Course](https://img.shields.io/badge/Course-Cloud%20Computing%20%2F%20Computer%20Networks-blue)](#)
+[![Hypervisors](https://img.shields.io/badge/Hypervisors-Proxmox%20VE%20%7C%20VMware%20Workstation-orange)](#)
+[![Benchmark](https://img.shields.io/badge/Benchmark-Sysbench%20CPU%2020k%20Primes-brightgreen)](#)
+[![Status](https://img.shields.io/badge/Status-Completed-green)](#)
 
 ---
 
 ## Executive Summary
 
-This repository contains the complete experimental setup, empirical benchmark data, performance visualization, and technical report comparing the CPU performance of a Type-1 Bare-Metal Hypervisor (Proxmox VE) and a Type-2 Hosted Hypervisor (VMware Workstation).
+This repository contains the complete experimental setup, empirical benchmark data, performance visualization, and technical report comparing the CPU performance of a **Type-1 Bare-Metal Hypervisor (Proxmox VE)** and a **Type-2 Hosted Hypervisor (VMware Workstation)**.
 
-Both hypervisors were deployed with identically configured Ubuntu Virtual Machines (2 vCPU, 2 GB RAM, 20 GB Disk). The standard sysbench CPU prime-number calculation benchmark (`--cpu-max-prime=20000`) was executed on both virtual machines under identical workload conditions.
+Both hypervisors were deployed with identically configured **Ubuntu Virtual Machines** (2 vCPU, 2 GB RAM, 20 GB Disk). The standard `sysbench` CPU prime-number calculation benchmark (`--cpu-max-prime=20000`) was executed on both virtual machines under identical workload conditions.
 
-> **Key Finding:** Proxmox VE (Type-1 Hypervisor) achieved **1,716.69 Events/sec** compared to VMware Workstation's **1,364.78 Events/sec** — demonstrating a **+25.79% throughput advantage** and a **20.55% reduction in average latency**.
+### Key Finding
+
+> Proxmox VE (Type-1 Hypervisor) achieved 1,716.69 Events/sec compared to VMware Workstation's 1,364.78 Events/sec — demonstrating a **+25.79% throughput advantage** and a **20.55% reduction in average latency**.
 
 ---
 
 ## Table of Contents
 
-- [1. Project Objectives](#1-project-objectives)
-- [2. Hypervisor Architectural Comparison](#2-hypervisor-architectural-comparison)
-- [3. Virtual Machine Specifications](#3-virtual-machine-specifications)
-- [4. Experimental Procedure](#4-experimental-procedure)
-- [5. Empirical Results & Screenshots](#5-empirical-results--screenshots)
-- [6. Performance Comparison Table](#6-performance-comparison-table)
-- [7. Metric Explanations & Visualizations](#7-metric-explanations--visualizations)
-- [8. Technical Analysis & Discussion](#8-technical-analysis--discussion)
-- [9. Conclusion & Engineering Takeaways](#9-conclusion--engineering-takeaways)
-- [10. Repository Structure & Reproduction](#10-repository-structure--reproduction)
+1. [Project Objectives](#1-project-objectives)
+2. [Hypervisor Architectural Comparison](#2-hypervisor-architectural-comparison)
+3. [Virtual Machine Specifications](#3-virtual-machine-specifications)
+4. [Experimental Procedure](#4-experimental-procedure)
+5. [Empirical Results & Screenshots](#5-empirical-results--screenshots)
+6. [Performance Comparison Table](#6-performance-comparison-table)
+7. [Metric Explanations & Visualizations](#7-metric-explanations--visualizations)
+8. [Technical Analysis & Discussion](#8-technical-analysis--discussion)
+9. [Conclusion & Engineering Takeaways](#9-conclusion--engineering-takeaways)
+10. [Repository Structure & Reproduction](#10-repository-structure--reproduction)
 
 ---
 
@@ -51,7 +54,13 @@ The primary objectives of this Cloud Computing laboratory experiment are:
 
 Proxmox VE runs directly on the bare-metal physical host hardware. The Linux kernel integrated with KVM (Kernel-based Virtual Machine) acts as the hypervisor. Guest operating system instructions execute directly on hardware CPU VT-x/AMD-V extensions without passing through an intermediate desktop operating system.
 
-```text
+```mermaid
+graph TD
+    A[Physical Hardware (CPU, Memory, Storage, NIC)] --> B[Proxmox VE Hypervisor<br/>(Bare-Metal OS & KVM Kernel)]
+    B --> C[Ubuntu 24.04 Virtual Machine (CC-Experiment1-type1)]
+    subgraph Guest VM
+        C --> D[Sysbench CPU Benchmark]
+    end
 +-------------------------------------------------------------------+
 |               Ubuntu Virtual Machine (Type-1 Guest)               |
 +-------------------------------------------------------------------+
@@ -59,6 +68,13 @@ Proxmox VE runs directly on the bare-metal physical host hardware. The Linux ker
 +-------------------------------------------------------------------+
 |                 Physical Server Hardware (Bare Metal)             |
 +-------------------------------------------------------------------+
+graph TD
+    A[Physical Hardware (CPU, Memory, Storage, NIC)] --> B[Host Operating System<br/>(Windows 11 / Windows NT Kernel)]
+    B --> C[VMware Workstation (Virtual Machine Monitor - VMM)]
+    C --> D[Ubuntu Virtual Machine (CC-Experiment1-Type2)]
+    subgraph Guest VM
+        D --> E[Sysbench CPU Benchmark]
+    end
 +-------------------------------------------------------------------+
 |               Ubuntu Virtual Machine (Type-2 Guest)               |
 +-------------------------------------------------------------------+
@@ -108,3 +124,11 @@ Cloud_computing/
     ├── benchmark.sh                                    # Sysbench Automation Script
     ├── generate_plots.py                               # Matplotlib Visualization Generator
     └── parse_sysbench.py                               # Results Parser & Ratio Calculator
+
+chmod +x scripts/benchmark.sh
+./scripts/benchmark.sh
+chmod +x scripts/benchmark.sh
+./scripts/benchmark.sh
+python scripts/parse_sysbench.py
+
+
