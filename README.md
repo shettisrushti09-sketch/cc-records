@@ -26,8 +26,6 @@ The experiment compares:
 - Average latency
 - Maximum latency
 
-The procedure follows the provided laboratory manual. :contentReference[oaicite:0]{index=0}
-
 ---
 
 ## 2. Experimental Environment
@@ -42,8 +40,6 @@ The procedure follows the provided laboratory manual. :contentReference[oaicite:
 | CPU Benchmark | `sysbench cpu --cpu-max-prime=20000 run` |
 | Type-1 Hypervisor | Proxmox VE |
 | Type-2 Hypervisor | VMware Workstation |
-
-The laboratory manual specifies the same VM configuration for both hypervisors so that their CPU performance can be compared using Sysbench. :contentReference[oaicite:1]{index=1}
 
 ---
 
@@ -60,38 +56,45 @@ The Ubuntu virtual machine was configured with:
 
 The VM configuration and CPU performance were verified using system commands and Sysbench.
 
-### 3.1 Proxmox VE Dashboard
+## 3.1 Proxmox VE Dashboard
 
 ![Proxmox Dashboard](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/01-proxmox-dashboard.png)
 
 ---
 
-### 3.2 Proxmox VM Configuration
+## 3.2 Proxmox VM Configuration
 
 ![Proxmox VM Configuration](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/02-proxmox-vm-configuration.png)
 
 ---
 
-### 3.3 Proxmox VM Running
+## 3.3 Proxmox VM Running
 
 ![Proxmox VM Running](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/03-proxmox-vm-running.png)
 
 ---
 
-### 3.4 Ubuntu Console
+## 3.4 Ubuntu Console
 
 ![Proxmox Ubuntu Console](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/04-proxmox-ubuntu-console.png)
 
 ---
 
-### 3.5 System Configuration
+## 3.5 System Configuration
 
 ![Proxmox System Configuration](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/05-proxmox-system-configuration.png)
 
-The system configuration was verified using commands such as:
+The system configuration was verified using:
 
 ```bash
 hostnamectl
 lscpu
 free -h
 df -h
+
+## 3.6 Sysbench CPU Benchmark
+
+The following command was used:
+
+```bash
+sysbench cpu --cpu-max-prime=20000 run
