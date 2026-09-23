@@ -108,12 +108,3 @@ Cloud_computing/
     ├── benchmark.sh                                    # Sysbench Automation Script
     ├── generate_plots.py                               # Matplotlib Visualization Generator
     └── parse_sysbench.py                               # Results Parser & Ratio Calculator
-# Run Benchmark Script on VM:
-chmod +x scripts/benchmark.sh
-./scripts/benchmark.sh
-
-# Generate Plots:
-python scripts/generate_plots.py
-
-# Parse & Compare Results:
-python scripts/parse_sysbench.py
