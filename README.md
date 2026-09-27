@@ -201,31 +201,31 @@ The same workload was used in both environments to allow comparison of the measu
 
 #### Figure 1: Proxmox VE Dashboard
 
-![Proxmox VE Dashboard](screenshots/type1-promox/01-proxmox-dashboard.png)
+![Proxmox VE Dashboard](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/01-proxmox-dashboard.png)
 
 #### Figure 2: Proxmox VM Configuration
 
-![Proxmox VM Configuration](screenshots/type1-promox/02-proxmox-vm-configuration.png)
+![Proxmox VM Configuration](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/02-proxmox-vm-configuration.png)
 
 #### Figure 3: Proxmox VM Running
 
-![Proxmox VM Running](screenshots/type1-promox/03-proxmox-vm-running.png)
+![Proxmox VM Running](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/03-proxmox-vm-running.png)
 
 #### Figure 4: Proxmox Ubuntu Console
 
-![Proxmox Ubuntu Console](screenshots/type1-promox/04-proxmox-ubuntu-console.png)
+![Proxmox Ubuntu Console](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/04-proxmox-ubuntu-console.png)
 
 #### Figure 5: Proxmox System Configuration
 
-![Proxmox System Configuration](screenshots/type1-promox/05-proxmox-system-configuration.png)
+![Proxmox System Configuration](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/05-proxmox-system-configuration.png)
 
 #### Figure 6: Proxmox Sysbench Benchmark Result
 
-![Proxmox Sysbench Result](screenshots/type1-promox/06-promox-sysbench-result.png)
+![Proxmox Sysbench Result](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/06-promox-sysbench-result.png)
 
 #### Figure 7: Proxmox Resource Monitoring
 
-![Proxmox Resource Monitoring](screenshots/type1-promox/07-promox-resource-monitoring.png)
+![Proxmox Resource Monitoring](CC-Experiment-01-Hypervisor-Analysis/screenshots/type1-promox/07-promox-resource-monitoring.png)
 
 ---
 
@@ -233,23 +233,23 @@ The same workload was used in both environments to allow comparison of the measu
 
 #### Figure 8: VMware VM Configuration
 
-![VMware VM Configuration](screenshots/type2-vmware/01-vmware-vm-configuration.png)
+![VMware VM Configuration](CC-Experiment-01-Hypervisor-Analysis/screenshots/type2-vmware/01-vmware-vm-configuration.png)
 
 #### Figure 9: VMware VM Running
 
-![VMware VM Running](screenshots/type2-vmware/02-vmware-vm-running.png)
+![VMware VM Running](CC-Experiment-01-Hypervisor-Analysis/screenshots/type2-vmware/02-vmware-vm-running.png)
 
 #### Figure 10: VMware System Configuration
 
-![VMware System Configuration 1](screenshots/type2-vmware/03-vmware-system-configuration1.png)
+![VMware System Configuration 1](CC-Experiment-01-Hypervisor-Analysis/screenshots/type2-vmware/03-vmware-system-configuration1.png)
 
 #### Figure 11: VMware System Configuration
 
-![VMware System Configuration 2](screenshots/type2-vmware/03-vmware-system-configuration%202.png)
+![VMware System Configuration 2](CC-Experiment-01-Hypervisor-Analysis/screenshots/type2-vmware/03-vmware-system-configuration%202.png)
 
 #### Figure 12: VMware Sysbench Benchmark Result
 
-![VMware Sysbench Result](screenshots/type2-vmware/04-vmware-sysbench-result.png)
+![VMware Sysbench Result](CC-Experiment-01-Hypervisor-Analysis/screenshots/type2-vmware/04-vmware-sysbench-result.png)
 
 ---
 
@@ -257,7 +257,7 @@ The same workload was used in both environments to allow comparison of the measu
 
 #### Figure 13: Combined Hypervisor Performance Comparison
 
-![Hypervisor Performance Comparison](screenshots/comparison/01-hypervisor-performance-comparison.png)
+![Hypervisor Performance Comparison](CC-Experiment-01-Hypervisor-Analysis/screenshots/comparison/01-hypervisor-performance-comparison.png)
 
 ---
 
@@ -304,7 +304,7 @@ The following table summarizes the exact values recorded during the experimental
 
 ### Chart 1: CPU Throughput Comparison
 
-![Events per Second Comparison](images/events_per_second_comparison.png)
+![Events per Second Comparison](CC-Experiment-01-Hypervisor-Analysis/images/events_per_second_comparison.png)
 
 **Figure 14:** CPU throughput comparison between Proxmox VE and VMware Workstation.
 
@@ -312,7 +312,7 @@ The following table summarizes the exact values recorded during the experimental
 
 ### Chart 2: CPU Latency Comparison
 
-![Latency Comparison](images/latency_comparison.png)
+![Latency Comparison](CC-Experiment-01-Hypervisor-Analysis/images/latency_comparison.png)
 
 **Figure 15:** Measured latency comparison between the two virtualization environments.
 
@@ -320,7 +320,7 @@ The following table summarizes the exact values recorded during the experimental
 
 ### Chart 3: Total Events Processed
 
-![Total Events Comparison](images/total_events_comparison.png)
+![Total Events Comparison](CC-Experiment-01-Hypervisor-Analysis/images/total_events_comparison.png)
 
 **Figure 16:** Total benchmark events completed during the test.
 
@@ -328,7 +328,7 @@ The following table summarizes the exact values recorded during the experimental
 
 ### Chart 4: Comprehensive Performance Dashboard
 
-![Overall Performance Dashboard](images/overall_performance_dashboard.png)
+![Overall Performance Dashboard](CC-Experiment-01-Hypervisor-Analysis/images/overall_performance_dashboard.png)
 
 **Figure 17:** Overall performance dashboard containing the main benchmark measurements.
 
