@@ -437,8 +437,6 @@ cc-records/
 │
 └── CC-Experiment-01-Hypervisor-Analysis/
     │
-    ├── README.md
-    │
     ├── images/
     │   ├── 04-vmware-sysbench-result.png
     │   ├── 06-promox-ubantu-sysbench-result.png
