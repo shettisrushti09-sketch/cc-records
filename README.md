@@ -2,7 +2,6 @@
 
 ---
 
-## Executive Summary
 
 This repository contains the experimental setup, benchmark results, performance visualizations, screenshots, and technical analysis for comparing a Type-1 Hypervisor (**Proxmox VE**) and a Type-2 Hypervisor (**VMware Workstation**).
 
@@ -515,3 +514,8 @@ Record the following values from the Sysbench output:
 ---
 
 *Laboratory Experiment conducted for Cloud Computing / Computer Networks Course.*
+
+#### 6.Author 
+Srushti Shetii
+roll no 159
+usn  01fe24bci002
